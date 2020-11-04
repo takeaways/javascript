@@ -25,4 +25,4 @@
   - 클래스 자체로는 사용할 수 없으며
   - 인스턴스로 생성해야 사용할 수 있습니다.
 
-![Class](images/class.png)
+![Class](https://github.com/nomadGeonilJang/javascript/blob/master/Class/Images/class.png?raw=true)
