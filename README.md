@@ -1,1 +1,5 @@
-"# Basic-JS-Lecture-in-NAVER" 
+# You Don't Know Javascript
+
+1. 오브제트, 메소드를 만든 목적
+2. 어떤 배경으로 인해 만든 것인지
+3. 개발자에게 전하고자 하는 메시지는?
