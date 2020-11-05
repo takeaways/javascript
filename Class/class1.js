@@ -1,7 +1,5 @@
-class Point {
-  getPoint() {
-    return 100;
+class Book {
+  constructor(name) {
+    this.name = name;
   }
 }
-const obj = new Point();
-console.log(obj.getPoint());
