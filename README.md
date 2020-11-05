@@ -56,7 +56,64 @@
 - 의미를 가진 태그 대거 추가
   - section, header, footer, main, article, nav등
 - 의미를 기술하기 위한 Microdata도 포한.
+- canvas, video, figure, srcset
+- WebSocket, WebWorker, StorageAPI, History
+- 점진적 향상 vs 우아한 성능 저하
 
 1. Semantically
    - HTML 엘리먼트와 속성, 속성값은 특정한 의미를 지니도록 정의되어있다.
 2. Documents
+
+### CSS
+
+- 각 기능별 모듈만 존재
+- css명세가 방대해 졌다.
+- 레이아웃
+  1. 기본 개념 두 가지
+     - 크기 와 위치
+  2. CSS Box Model
+     - CSS레이아웃의 기본이 되는 원리
+     - 엘리먼트의 크기를 정하는 표준
+     - box-sizing 속성으로 크기 계산 방식 변경 가능
+  3. flex box
+     - display:flex
+     - flex-direction, justify-content, align-items
+     - 필연적인 중첩. 한 방향으로만
+  4. grid Layout
+  5. 논리적 프로퍼티와 값
+     - line 글쓰기 방향
+     - block 글쓰기 수직 방향
+     - ex, margin-line-start, margin-line-end, margin-block-start, margin-block-end
+- BEM, SMACSS
+- 마진 병합
+  1. 수직 인접한 두 마진이 더 끈 쪽으로 병합되는 현상.
+
+### JS
+
+1. ECMAScript
+
+- ESM (import, from)
+
+2. Lexical Environment
+
+- 정의
+  - 변수나 함수 등의 식별자(변수, 함수 이름)를 정의할 때 사용되는 명세
+  - 중첩된 어휘적 환경에 기반해 동작
+  - Environment Record와 outer 속성을 포함
+- 관련 문법
+  - 함수선언
+  - 블럭문
+  - try~catch문의 catch 절
+- 종류
+  - 전역 환경
+  - 모듈 환경
+  - 함수 환경
+
+3. 실행 컨텍스트 Execution Context
+
+- 정의
+  - 자바스크립트 코드가 실행되는 환경
+  - 모든 JS코드는 실행 컨텍스트 내부에서 실행된다.
+- 종류
+  - 전역 실행 컨텍스트
+  - 함수 실행 컨텍스트
