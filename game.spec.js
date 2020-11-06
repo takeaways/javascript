@@ -18,4 +18,8 @@ describe("369 game", () => {
       "one,two,Boom,four,five,Boom,seven,eight,Boom"
     );
   });
+
+  it("game([29,30,31,32,33]) should return one,two,Boom,four,five,Boom,seven,eight,Boom", () => {
+    expect(game([29, 30, 31, 32, 33])).toBe("Boom,Boom,Boom,Boom,BoomBoom");
+  });
 });

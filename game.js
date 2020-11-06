@@ -13,8 +13,13 @@ export default function game(arr) {
 
   return arr
     .map((number) => {
-      if (number % 3 === 0) {
-        return "Boom";
+      const threes = number.toString().match(/[3|6|9]/g);
+      if (threes !== null) {
+        let temp = "";
+        for (let i = 0; i < threes.length; i++) {
+          temp += "Boom";
+        }
+        return temp;
       }
       return numberToEng[number];
     })
