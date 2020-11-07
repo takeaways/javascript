@@ -26,9 +26,12 @@
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
+    "eslint": "^7.13.0",
     "jest": "^26.6.3"
   },
-  "babel":{
-    "presets": ["@babel/env"]
+  "babel": {
+    "presets": [
+      "@babel/env"
+    ]
   }
 }
