@@ -279,4 +279,4 @@ z = null; //이제 01 및 02는 아무곳에서도 참조가 되지 않아 가�
 
 # 2020 javascript
 
-- [let and const](/2020/let%EA%B3%BC%20const/LetAndConst.md)
+- [001 let and const](/2020/let%EA%B3%BC%20const/LetAndConst.md)

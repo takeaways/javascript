@@ -22,9 +22,12 @@
 ### let
 
 1. block scope를 가진다. {}
-2. 변수가 선언된 블로이 스코프
+2. 변수가 선언된 블럭이 스코프
+   - {}, function{}, try{}~catch, switch{}
 
 ```js
 let name1; //undefined
 let one = 1;
 ```
+
+3. let 변수는 for문에서 스코프를 가지나 var는 가지지 않는다.
