@@ -18,6 +18,7 @@ export default function game(arr) {
         let temp = "";
         for (let i = 0; i < threes.length; i++) {
           temp += "Boom";
+          console.log(temp);
         }
         return temp;
       }
