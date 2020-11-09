@@ -1,27 +1,39 @@
 import { randomColor, appendItem } from "./utils/index.js";
 
-const SLIDE_DATA = [1, 2, 3, 4, 5];
-
 class Slide {
-  constructor() {
-    this.$main = document.querySelector("main");
-    this.$list = document.querySelector(".list");
-    this.$list.style.width = `${SLIDE_DATA.length * 300}px`;
+  constructor(slideData) {
+    this.currentIndex = 0;
+    this.slideData = slideData;
+    this.$list = document.createElement("ul");
+    this.$list.setAttribute("class", "list");
+    this.$list.style.width = `${slideData.length * 300}px`;
     this.$list.addEventListener("click", this.handleMove());
-    appendItem(appendItem(this.makeSlide(SLIDE_DATA), this.$list), this.$main);
+    appendItem(this.makeSlide(slideData), this.$list);
   }
   handleMove() {
-    function move(id) {
+    const move = (id) => {
+      console.log(id, this.slideData.length);
+      if (this.slideData.length < id || id < 0) {
+        return;
+      }
       return `${Number(id) * 300}px`;
-    }
+    };
+
     let direction = false;
     let first = true;
     return (event) => {
-      const id = event.target.dataset.id;
-      if (this.isExistId(id)) {
-        return;
+      let id;
+      if (typeof event === "number") {
+        id = event;
+      } else if (event?.target.dataset.id) {
+        id = event.target.dataset.id;
+      } else {
+        id = Number(this.currentIndex) + 1;
       }
-      if (this.isChange(id)) {
+
+      this.currentIndex = id;
+
+      if (this.isChange(this.currentIndex)) {
         if (!this.isFirst(first)) {
           direction = !direction;
         }
@@ -37,21 +49,18 @@ class Slide {
   }
   makeSlide(items) {
     const sliderFrag = document.createDocumentFragment();
-    items.forEach((item) => {
+    items.forEach((item, index) => {
       const slide = document.createElement("div");
       slide.setAttribute("class", "item");
       slide.innerHTML = `<span class="number">${item}</span`;
-      slide.dataset.id = item;
+      slide.dataset.id = index + 1;
       slide.style.backgroundColor = randomColor();
       appendItem(slide, sliderFrag);
     });
     return sliderFrag;
   }
   isChange(id) {
-    return (
-      Number(id) === SLIDE_DATA[0] ||
-      Number(id) === SLIDE_DATA[SLIDE_DATA.length - 1]
-    );
+    return Number(id) === 1 || Number(id) === this.slideData.length;
   }
   isExistId(id) {
     return !id;
@@ -68,70 +77,14 @@ class Slide {
   }
 }
 
-// const $main = document.querySelector("main");
-// const $list = document.querySelector(".list");
-// $list.style.width = `${SLIDE_DATA.length * 300}px`;
-// $list.addEventListener("click", handleMove());
+const $main = document.querySelector("main");
+const $up = document.querySelector("#up");
+const s1 = new Slide(["a", "b", "c", "d", "e"]);
+$up.addEventListener("click", () => {
+  const handler = s1.handleMove();
+  handler();
+});
 
-// function isChange(id) {
-//   return (
-//     Number(id) === SLIDE_DATA[0] ||
-//     Number(id) === SLIDE_DATA[SLIDE_DATA.length - 1]
-//   );
-// }
-// function isExistId(id) {
-//   return !id;
-// }
-// function isDirection(direction) {
-//   if (direction) {
-//     return "left";
-//   } else {
-//     return "right";
-//   }
-// }
-// function isFirst(first) {
-//   return !!first;
-// }
-
-// function handleMove() {
-//   function move(id) {
-//     return `${Number(id) * 300}px`;
-//   }
-//   let direction = false;
-//   let first = true;
-//   return (event) => {
-//     const id = event.target.dataset.id;
-//     if (isExistId(id)) {
-//       return;
-//     }
-//     if (isChange(id)) {
-//       if (!isFirst(first)) {
-//         direction = !direction;
-//       }
-//     }
-//     first = false;
-
-//     if (isDirection(direction) === "left") {
-//       $list.style.transform = `translateX(-${move(id - 2)})`;
-//     } else if (isDirection(direction) === "right") {
-//       $list.style.transform = `translateX(-${move(id)})`;
-//     }
-//   };
-// }
-
-// function makeSlide(items) {
-//   const sliderFrag = document.createDocumentFragment();
-//   items.forEach((item) => {
-//     const slide = document.createElement("div");
-//     slide.setAttribute("class", "item");
-//     slide.innerHTML = `<span class="number">${item}</span`;
-//     slide.dataset.id = item;
-//     slide.style.backgroundColor = randomColor();
-//     appendItem(slide, sliderFrag);
-//   });
-//   return sliderFrag;
-// }
-
-// appendItem(appendItem(makeSlide(SLIDE_DATA), $list), $main);
-
-new Slide();
+appendItem(s1.$list, $main);
+appendItem(new Slide(["1", "2", "3", "4", "5", "6"]).$list, $main);
+appendItem(new Slide(["a", "b", "c", "d", "e"]).$list, $main);
