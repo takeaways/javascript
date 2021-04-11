@@ -1,4 +1,4 @@
-# You Don't Know Javascript...
+# You Don't Know Javascript.
 
 ## 정체되지 않는 프론트엔드 개발자의 일하는 방식
 
